@@ -1,5 +1,6 @@
 package com.yeahbutstill.infosys.controller;
 
+import com.yeahbutstill.infosys.dto.Person;
 import com.yeahbutstill.infosys.service.PersonService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,11 @@ public class PersonController {
     @GetMapping(value = "/getpersonname")
     public String getPersonName(@RequestParam(value = "gender", defaultValue = "gender") String gender) {
         return personService.getName(gender);
+    }
+
+    @GetMapping(value = "/getpersonnamev2")
+    public Person getPersonNameV2(@RequestParam(value = "gender", defaultValue = "gender") String gender) {
+        return personService.getNameV2(gender);
     }
 
 }

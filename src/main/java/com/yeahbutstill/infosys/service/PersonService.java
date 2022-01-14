@@ -20,4 +20,18 @@ public class PersonService {
 
     }
 
+    public Person getNameV2(String gender) {
+
+        Person person = new Person();
+
+        if ("man".equals(gender)) {
+            person.setName("Dani");
+        } else {
+            person.setName("Maya");
+        }
+
+        return person;
+
+    }
+
 }
