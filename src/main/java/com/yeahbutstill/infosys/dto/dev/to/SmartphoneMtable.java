@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Smartphone {
+public class SmartphoneMtable {
     private String brand;
     private String model;
 }

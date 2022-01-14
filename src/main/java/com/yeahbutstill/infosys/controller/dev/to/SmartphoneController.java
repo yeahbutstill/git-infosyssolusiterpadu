@@ -1,6 +1,8 @@
 package com.yeahbutstill.infosys.controller.dev.to;
 
-import com.yeahbutstill.infosys.dto.dev.to.Smartphone;
+import com.yeahbutstill.infosys.dto.dev.to.SmartphoneAnotherJson;
+import com.yeahbutstill.infosys.dto.dev.to.SmartphoneImtable;
+import com.yeahbutstill.infosys.dto.dev.to.SmartphoneMtable;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +18,20 @@ public class SmartphoneController {
     private static final Logger logger = LoggerFactory.getLogger(SmartphoneController.class);
 
     @PostMapping(value = "/smartphone")
-    public ResponseEntity<Smartphone> addSmartphone(@RequestBody Smartphone smartphone) {
-        logger.info("Received new smartphone: " + smartphone.getBrand() + "" + smartphone.getModel());
-        return ResponseEntity.ok(smartphone);
+    public ResponseEntity<SmartphoneMtable> addSmartphone(@RequestBody SmartphoneMtable smartphoneMtable) {
+        logger.info("Received new smartphoneMtable: " + smartphoneMtable.getBrand() + "" + smartphoneMtable.getModel());
+        return ResponseEntity.ok(smartphoneMtable);
+    }
+
+    @PostMapping(value = "/smartphonev1")
+    public ResponseEntity<SmartphoneImtable> addSmartphoneV1(@RequestBody SmartphoneImtable smartphoneImtable) {
+        logger.info("Received new smartphoneImtable: " + smartphoneImtable.getBrand() + "" + smartphoneImtable.getModel());
+        return ResponseEntity.ok(smartphoneImtable);
+    }
+
+    @PostMapping(value = "/smartphonev2")
+    public ResponseEntity<SmartphoneAnotherJson> addSmartphoneV2(@RequestBody SmartphoneAnotherJson smartphoneAnotherJson) {
+        logger.info("Received new smartphoneAnotherJson: " + smartphoneAnotherJson.getBrand() + "" + smartphoneAnotherJson.getModel());
+        return ResponseEntity.ok(smartphoneAnotherJson);
     }
 }
