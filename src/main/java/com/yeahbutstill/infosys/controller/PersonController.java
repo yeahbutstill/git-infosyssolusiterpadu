@@ -1,19 +1,17 @@
 package com.yeahbutstill.infosys.controller;
 
 import com.yeahbutstill.infosys.dto.Person;
-import com.yeahbutstill.infosys.service.PersonService;
+import com.yeahbutstill.infosys.service.impl.PersonService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api")
 @RequiredArgsConstructor
 public class PersonController {
 
-    PersonService personService;
+    private final PersonService personService;
 
     @GetMapping(value = "/getpersonname")
     public String getPersonName(@RequestParam(value = "gender", defaultValue = "gender") String gender) {
@@ -23,6 +21,11 @@ public class PersonController {
     @GetMapping(value = "/getpersonnamev2")
     public Person getPersonNameV2(@RequestParam(value = "gender", defaultValue = "gender") String gender) {
         return personService.getNameV2(gender);
+    }
+
+    @PostMapping(value = "/getpersonnamev3", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getPersonNameV3(@RequestBody() Person person) {
+        return personService.getNameV3(person.getName());
     }
 
 }
