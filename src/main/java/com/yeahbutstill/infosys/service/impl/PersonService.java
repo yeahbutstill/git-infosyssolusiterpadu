@@ -5,6 +5,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 @Service
 @RequiredArgsConstructor
 @Slf4j
@@ -53,4 +56,11 @@ public class PersonService {
         return fullName;
     }
 
+    public String getNameAndAge(String name, String yearOfBirth) {
+        log.info("Fetching person and calculate birthday to result age: {}", name, yearOfBirth);
+        LocalDate today = LocalDate.now();
+        Period period = Period.between(today, LocalDate.ofYearDay(Integer.parseInt(yearOfBirth), 1988));
+
+        return String.valueOf(period.getYears());
+    }
 }

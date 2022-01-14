@@ -1,5 +1,6 @@
 package com.yeahbutstill.infosys.controller;
 
+import com.yeahbutstill.infosys.dto.Data;
 import com.yeahbutstill.infosys.dto.Person;
 import com.yeahbutstill.infosys.service.impl.PersonService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,11 @@ public class PersonController {
     @PostMapping(value = "/getpersonnamev3", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public String getPersonNameV3(@RequestBody() Person person) {
         return personService.getNameV3(person.getName());
+    }
+
+    @PostMapping(value = "/getpersonage", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String getPersonV1(@RequestBody() Person person, Data data) {
+        return personService.getNameAndAge(person.getName(), String.valueOf(data.getAge()));
     }
 
 }
