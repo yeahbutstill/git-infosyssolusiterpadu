@@ -1,11 +1,13 @@
 package com.yeahbutstill.infosys.dto.dev.to;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
+@JsonRootName("smartphone")
 public class SmartphoneJsonWithArray {
     private String brand;
     private Model model;
