@@ -26,6 +26,7 @@ class UserServiceTest {
     @BeforeEach
     public void init() {
         Mockito.when(userRepository.getById(anyLong())).thenReturn(new User());
+        Mockito.when(userRepository.getById(anyLong())).thenReturn(null);
     }
 
     @Test
