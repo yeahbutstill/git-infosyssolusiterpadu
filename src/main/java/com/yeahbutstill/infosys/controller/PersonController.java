@@ -34,11 +34,11 @@ public class PersonController {
         return personServiceImpl.getNameAndAge(person.getName(), String.valueOf(data.getAge()));
     }
 
-    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public String register(@RequestBody() UserRequest userRequest) {
-
-        return personServiceImpl.register(userRequest);
-
-    }
+//    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+//    public String register(@RequestBody() UserRequest userRequest) {
+//
+//        return personServiceImpl.register(userRequest);
+//
+//    }
 
 }
