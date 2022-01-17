@@ -1,6 +1,9 @@
 package com.yeahbutstill.infosys.service.impl;
 
 import com.yeahbutstill.infosys.dto.Person;
+import com.yeahbutstill.infosys.exception.UserRequest;
+import com.yeahbutstill.infosys.model.User;
+import com.yeahbutstill.infosys.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -11,7 +14,9 @@ import java.time.Period;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class PersonService {
+public class PersonServiceImpl {
+
+    private final UserRepository userRepository;
 
     public String getName(String gender) {
         log.info("Fetching person name: {}", gender);
@@ -62,5 +67,21 @@ public class PersonService {
         Period period = Period.between(today, LocalDate.ofYearDay(Integer.parseInt(yearOfBirth), 1988));
 
         return String.valueOf(period.getYears());
+    }
+
+    public String register(UserRequest userRequest) {
+
+        User existUser = userRepository.findByUserName(userRequest.getUsername());
+
+        if (existUser != null) {
+            return "Register failed, username is already exist";
+        }
+
+        User user = new User();
+        user.setUserName(userRequest.getUsername());
+        user.setPassWord(userRequest.getPassword());
+        userRepository.save(user);
+
+        return "Register Success !";
     }
 }
