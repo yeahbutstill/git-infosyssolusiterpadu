@@ -2,6 +2,7 @@ package com.yeahbutstill.infosys.controller;
 
 import com.yeahbutstill.infosys.dto.Data;
 import com.yeahbutstill.infosys.dto.Person;
+import com.yeahbutstill.infosys.exception.UserRequest;
 import com.yeahbutstill.infosys.service.impl.PersonServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -34,11 +35,11 @@ public class PersonController {
         return personServiceImpl.getNameAndAge(person.getName(), String.valueOf(data.getAge()));
     }
 
-//    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-//    public String register(@RequestBody() UserRequest userRequest) {
-//
-//        return personServiceImpl.register(userRequest);
-//
-//    }
+    @PostMapping(value = "/register", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public String register(@RequestBody() UserRequest userRequest) {
+
+        return personServiceImpl.register(userRequest);
+
+    }
 
 }
